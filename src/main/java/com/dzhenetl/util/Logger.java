@@ -25,7 +25,7 @@ public class Logger {
 
     public void log(String name, String msg) {
         String time = LocalDateTime.now().format(formatter);
-        String line = String.format("[%s] %s - %s\n", time, name, msg);
+        String line = String.format("[%s] %s: %s\n", time, name, msg);
 
         try (FileWriter writer = new FileWriter(logFile, true)) {
             writer.write(line);

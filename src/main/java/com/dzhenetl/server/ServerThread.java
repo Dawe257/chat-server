@@ -57,10 +57,12 @@ public class ServerThread extends Thread {
 
     private void sendMessageToAllClients(String name, String msg) {
         threadList.forEach(x -> {
-            try {
-                x.socket.write(ByteBuffer.wrap((name + ": " + msg).getBytes(StandardCharsets.UTF_8)));
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (x.socket.isConnected()) {
+                try {
+                    x.socket.write(ByteBuffer.wrap((name + ": " + msg).getBytes(StandardCharsets.UTF_8)));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
