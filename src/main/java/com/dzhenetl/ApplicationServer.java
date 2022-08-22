@@ -1,0 +1,13 @@
+package com.dzhenetl;
+
+import com.dzhenetl.server.Server;
+
+import java.io.IOException;
+
+public class ApplicationServer {
+
+    public static void main(String[] args) throws IOException {
+        Server server = new Server();
+        server.start();
+    }
+}
